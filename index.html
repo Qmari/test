@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="./namecard.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' crossorigin="anonymous">
+</head>
+<body>
+    <div class="form-group">
+        <span>Name:</span>
+        <input id="input_name" type="text" name="name" placeholder="e.g. Joash Tan Jia Le" class="form-field" />
+    </div>
+    <div class="form-group">
+        <span>Position:</span>
+        <input id="input_position" type="text" name="position" placeholder="e.g. Assistant Director" class="form-field"/>
+    </div>
+    <div class="form-group">
+        <span>Additional:</span>
+        <input id="input_additional" type="text" name="position" placeholder="Secondary position" class="form-field"/>
+    </div>
+    <div class="form-group">
+        <span>Phone:</span>
+        <input id="input_number" type="text" name="phone" placeholder="e.g. 9123 4567" class="form-field"/>
+    </div>
+    <div>
+        <button class="button-6" id="generate">Generate</button>
+        <button class="button-6" id="dl">Download</button>
+        <a class="button-6" href="./Outlook Signature Instructions.pdf" target="_blank">Instructions (PDF)</a>
+    </div>
+    <br /><br />
+    <div id="namecard" class="signature-container">
+        <div class="text-overlay">
+            <span id="card_name" class="name">Joash Tan Jia Le</span>
+            <span id="card_position" class="position">Coffee Maker</span>
+            <span id="card_additional" class="additional"></span>
+            <span id="card_number" class="phone">+65 9123 4567</span>
+            <br />
+            <span class="company">EV-Electric (EVe) Charging Pte Ltd</span>
+            <span class="website">www.eve.com.sg</span>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<script>
+    document.getElementById("generate").onclick = function(){
+        document.getElementById("card_name").textContent = document.getElementById("input_name").value;
+        document.getElementById("card_position").textContent = document.getElementById("input_position").value;
+        document.getElementById("card_additional").textContent = document.getElementById("input_additional").value;
+        document.getElementById("card_number").textContent = document.getElementById("input_number").value;
+    }
+
+    document.getElementById("dl").onclick = function(){
+        const target = document.getElementById("namecard");
+        var scale = 2;
+        domtoimage.toBlob(target, {
+            width: target.clientWidth * scale,
+            height: target.clientHeight * scale,
+            style: {
+              transform: 'scale('+scale+')',
+              transformOrigin: 'top left',
+            }
+        }).then(function(blob) {
+            window.saveAs(blob, "signature.png");
+        });
+    }
+</script>
+</html>

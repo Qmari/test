@@ -1,0 +1,34 @@
+
+.signature-container {
+  position: relative;
+  width: 650px;
+  height: 200px;
+  background-image: url('email_signature__2025_new.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 32px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 40px;
+  left: 260px;
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.text-overlay .name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.text-overlay .position,
+.text-overlay .additional,
+.text-overlay .phone,
+.text-overlay .company,
+.text-overlay .website {
+  font-size: 14px;
+  margin-top: 2px;
+}
